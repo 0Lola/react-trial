@@ -10,9 +10,14 @@ const SearchInput = (props) => {
 
     // searchInput 改變時執行
     useEffect(() => {
-        setTimeout(()=>{
+        
+         const timeoutId = setTimeout(() => {
             searchWiki(search)
-        },500)
+        }, 500)
+
+        return () => {
+            clearTimeout(timeoutId)
+        }
     }, [search])
 
     useEffect(() => {
